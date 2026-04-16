@@ -7,8 +7,7 @@
     "tabs",
     "storage",
     "alarms",
-    "activeTab",
-    "favicon"
+    "activeTab"
   ],
   "host_permissions": [
     "<all_urls>"
@@ -25,6 +24,7 @@
     "default_title": "TabFlow - Smart Tab Manager"
   },
   "background": {
+    "scripts": ["background.js"],
     "service_worker": "background.js"
   },
   "icons": {
@@ -37,7 +37,8 @@
   "browser_specific_settings": {
     "gecko": {
       "id": "tabflow@extension.dev",
-      "strict_min_version": "109.0"
+      "strict_min_version": "109.0",
+      "data_collection_permissions": {}
     }
   },
   "homepage_url": "https://github.com/yourusername/tabflow",

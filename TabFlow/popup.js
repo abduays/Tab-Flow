@@ -178,7 +178,11 @@ function renderWhitelist(domains) {
   container.innerHTML = '';
   
   if (!Array.isArray(domains) || domains.length === 0) {
-    container.innerHTML = '<span style="color: var(--muted); font-size: 11px;">No protected domains yet</span>';
+    const emptyMsg = document.createElement('span');
+    emptyMsg.style.color = 'var(--muted)';
+    emptyMsg.style.fontSize = '11px';
+    emptyMsg.textContent = 'No protected domains yet';
+    container.appendChild(emptyMsg);
     return;
   }
   
@@ -187,21 +191,25 @@ function renderWhitelist(domains) {
     
     const tag = document.createElement('div');
     tag.className = 'domain-tag';
-    tag.innerHTML = `
-      <span>🛡️ ${escapeHtml(domain)}</span>
-      <span class="remove" role="button" tabindex="0" aria-label="Remove ${escapeHtml(domain)}">×</span>
-    `;
+    const domainSpan = document.createElement('span');
+    domainSpan.textContent = `🛡️ ${domain}`;
+    tag.appendChild(domainSpan);
+    
+    const removeBtn = document.createElement('span');
+    removeBtn.className = 'remove';
+    removeBtn.role = 'button';
+    removeBtn.tabIndex = 0;
+    removeBtn.setAttribute('aria-label', `Remove ${domain}`);
+    removeBtn.textContent = '×';
+    tag.appendChild(removeBtn);
     
     // Add click handler for remove button
-    const removeBtn = tag.querySelector('.remove');
-    if (removeBtn) {
-      removeBtn.addEventListener('click', () => removeDomain(domain).catch(console.error));
-      removeBtn.addEventListener('keypress', (e) => {
-        if (e.key === 'Enter' || e.key === ' ') {
-          removeDomain(domain).catch(console.error);
-        }
-      });
-    }
+    removeBtn.addEventListener('click', () => removeDomain(domain).catch(console.error));
+    removeBtn.addEventListener('keypress', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        removeDomain(domain).catch(console.error);
+      }
+    });
     
     container.appendChild(tag);
   });
