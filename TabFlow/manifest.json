@@ -37,10 +37,13 @@
   "browser_specific_settings": {
     "gecko": {
       "id": "tabflow@extension.dev",
-      "strict_min_version": "109.0"
+      "strict_min_version": "113.0",
+      "data_collection_permissions": {
+        "required": ["tabs"]
+      }
     },
     "gecko_android": {
-      "strict_min_version": "109.0"
+      "strict_min_version": "113.0"
     }
   },
   "homepage_url": "https://github.com/yourusername/tabflow",
