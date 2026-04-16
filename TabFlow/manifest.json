@@ -1,13 +1,45 @@
 {
   "manifest_version": 3,
-  "name": "TabFlow - Memory Optimizer",
-  "version": "1.0.0",
-  "description": "Auto-suspend inactive tabs to free RAM and speed up your browser.",
-  "permissions": ["tabs", "storage", "alarms"],
+  "name": "TabFlow - Smart Tab Manager",
+  "version": "2.0.0",
+  "description": "AI-powered tab suspension with audio detection, smart whitelisting, and productivity analytics. Optimized for Chrome & Firefox.",
+  "permissions": [
+    "tabs",
+    "storage",
+    "alarms",
+    "activeTab",
+    "favicon"
+  ],
+  "host_permissions": [
+    "<all_urls>"
+  ],
   "action": {
-    "default_popup": "popup.html"
+    "default_popup": "popup.html",
+    "default_icon": {
+      "16": "icons/icon16.png",
+      "32": "icons/icon32.png",
+      "48": "icons/icon48.png",
+      "96": "icons/icon96.png",
+      "128": "icons/icon128.png"
+    },
+    "default_title": "TabFlow - Smart Tab Manager"
   },
   "background": {
     "service_worker": "background.js"
-  }
+  },
+  "icons": {
+    "16": "icons/icon16.png",
+    "32": "icons/icon32.png",
+    "48": "icons/icon48.png",
+    "96": "icons/icon96.png",
+    "128": "icons/icon128.png"
+  },
+  "browser_specific_settings": {
+    "gecko": {
+      "id": "tabflow@extension.dev",
+      "strict_min_version": "109.0"
+    }
+  },
+  "homepage_url": "https://github.com/yourusername/tabflow",
+  "author": "TabFlow Team"
 }

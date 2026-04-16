@@ -3,28 +3,90 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>TabFlow</title>
-  <link rel="stylesheet" href="styles.css">
+  <title>TabFlow - Smart Tab Manager</title>
+  <link rel="stylesheet" href="popup.css">
 </head>
 <body>
   <div class="container">
     <header>
       <div class="logo">🌊 TabFlow</div>
-      <span class="badge">Free</span>
+      <span class="badge" id="statusBadge">Smart</span>
     </header>
+    
+    <!-- Quick Stats -->
     <div class="stats-grid">
       <div class="stat-card"><div class="stat-label">Active Tabs</div><div class="stat-value" id="activeCount">--</div></div>
-      <div class="stat-card"><div class="stat-label">Suspended</div><div class="stat-value" id="suspendedCount">--</div></div>
+      <div class="stat-card"><div class="stat-value" id="suspendedCount">--</div><div class="stat-label">Suspended</div></div>
       <div class="stat-card highlight"><div class="stat-label">Memory Freed</div><div class="stat-value" id="memorySaved">-- MB</div></div>
+      <div class="stat-card"><div class="stat-label">🔊 Protected</div><div class="stat-value" id="audibleCount">--</div></div>
     </div>
+    
+    <!-- Smart Features Toggle -->
+    <div class="features-section">
+      <div class="feature-toggle">
+        <label class="toggle-label">
+          <input type="checkbox" id="smartSuspensionToggle" checked>
+          <span class="toggle-text">🧠 AI Smart Suspension</span>
+        </label>
+        <span class="toggle-desc">Learns your habits</span>
+      </div>
+      <div class="feature-toggle">
+        <label class="toggle-label">
+          <input type="checkbox" id="audioProtectionToggle" checked>
+          <span class="toggle-text">🎵 Audio Protection</span>
+        </label>
+        <span class="toggle-desc">Never interrupt media</span>
+      </div>
+      <div class="feature-toggle">
+        <label class="toggle-label">
+          <input type="checkbox" id="productivityToggle" checked>
+          <span class="toggle-text">📊 Productivity Analytics</span>
+        </label>
+        <span class="toggle-desc">Local-only tracking</span>
+      </div>
+    </div>
+    
+    <!-- Controls -->
     <div class="controls">
-      <button id="suspendAll" class="btn primary">⚡ Suspend All Inactive</button>
+      <button id="suspendAll" class="btn primary">⚡ Suspend Inactive</button>
       <button id="resumeAll" class="btn secondary">↩️ Resume All</button>
     </div>
+    
+    <!-- Whitelist Quick Add -->
+    <div class="whitelist-section">
+      <div class="section-title">🛡️ Protected Domains</div>
+      <div class="domain-list" id="whitelistDisplay"></div>
+      <div class="add-domain">
+        <input type="text" id="newDomain" placeholder="example.com">
+        <button id="addDomainBtn" class="btn-small">+</button>
+      </div>
+    </div>
+    
+    <!-- Productivity Snapshot -->
+    <div class="productivity-section">
+      <div class="section-title">📈 Today's Impact</div>
+      <div class="impact-stats">
+        <div class="impact-item">
+          <span class="impact-value" id="todaySuspensions">0</span>
+          <span class="impact-label">Tabs suspended</span>
+        </div>
+        <div class="impact-item">
+          <span class="impact-value" id="todayMemory">0 MB</span>
+          <span class="impact-label">Memory saved</span>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Pro Section -->
     <div class="pro-section">
-      <p>Unlock custom rules, real-time dashboard & team sync</p>
+      <p>✨ Unlock cross-browser sync, advanced analytics & team features</p>
       <a href="#" class="btn pro-btn" id="upgradeBtn">Upgrade to Pro - $3/mo</a>
     </div>
+    
+    <footer>
+      <a href="privacy-policy.html" target="_blank" class="footer-link">Privacy Policy</a>
+      <span class="version">v2.0.0</span>
+    </footer>
   </div>
   <script src="popup.js"></script>
 </body>
